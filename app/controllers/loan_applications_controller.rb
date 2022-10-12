@@ -1,5 +1,5 @@
 class LoanApplicationsController < ApplicationController
-   #GET /loan_applications
+  #GET /loan_applications
    def index
       loan_applications = LoanApplication.all
       render json: loan_applications

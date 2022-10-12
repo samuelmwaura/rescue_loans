@@ -6,7 +6,7 @@ class LoansController < ApplicationController
     #GET /loan/:id
     def show
       loan = find_a_loan
-      render json:loa      
+      render json:loan   
     end
     #POST /loans
     def create

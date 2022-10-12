@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :render_errors
+skip_before_action :authorize,only:[:create]
+
     #POST /users
     def create
-        user = User.create(user_params)
-        if user.valid?
-            render json:user, status: :created
-        else
-            render json: {errors:["Username must exist and password and confirm-password must match!"]}, status: :unprocessable_entity
-        end
+        user = User.create!(user_params)
+        render json:user, status: :created
     end
 
 
