@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-    before_action :authorize
     skip_before_action :authorize,only:[:create]
     #POST /login
     def create
@@ -17,9 +16,5 @@ class SessionsController < ApplicationController
     def destroy
         session.delete :user_id
         head :no_content
-    end
-
-    def authorize
-        render json:{error:["You are not logged in!"]}, status: :unauthorized unless session.include? :user_id
     end
 end

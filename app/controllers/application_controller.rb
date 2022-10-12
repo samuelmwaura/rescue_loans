@@ -2,6 +2,7 @@ class ApplicationController < ActionController::API
   include ActionController::Cookies
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
+before_action :authorize
 
 private
 
@@ -13,4 +14,8 @@ private
  def render_invalid(exception)
   render json:{error:exception.record.errors.full_messages}
  end
+
+ def authorize
+  render json:{error:["You must be logged in first!"]}, status: :unauthorized unless session.include? :user_id
+end
 end
