@@ -5,5 +5,5 @@ class Loan < ApplicationRecord
       #validations
     validates :name, presence:true, uniqueness:true
     validates :timing, numericality: {only_integer:true}
-    validates :purpose, inclusion: {in:["Business","Assest","Recurrent","Bill payment","Travel"]}
+    validates :purpose, inclusion: {in:["business","assest","recurrent","bill payment","travel"]}
 end

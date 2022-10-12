@@ -1,6 +1,4 @@
 class LoanApplicationsController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-rescue_from ActiveRecord::RecordInvalid, with: :render_errors
    #GET /loan_applications
    def index
       loan_applications = LoanApplication.all
@@ -25,13 +23,5 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_errors
 
    def loan_application_params
       params.permit(:category,:user_id,:loan_id)
-   end
-
-   def render_not_found(exception)
-      render json:{errors:exception}
-   end
-
-   def render_errors(exception)
-      render json:{errors:exception.record.errors.full_messages}, status: :not_found
    end
 end
