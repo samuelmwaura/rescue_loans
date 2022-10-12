@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :render_errors
 rescue_from ActiveRecord::RecordInvalid, with: :render_errors
     #POST /users
     def create
@@ -7,15 +6,19 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_errors
         if user.valid?
             render json:user, status: :created
         else
-            render json: {error:["Username must exist and password and confirm-password must match!"]}, status: :unprocessable_entity
+            render json: {errors:["Username must exist and password and confirm-password must match!"]}, status: :unprocessable_entity
         end
     end
 
 
     #GET /users/:id
     def show
-        user = User.find(session[:user_id])
-        render json: user
+        if session[:user_id]
+            user = User.find(session[:user_id])
+            render json: user
+        else
+            render json: {errors:["You are not logged in"]},status: :unauthorized
+        end
     end
 
     private
@@ -24,6 +27,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_errors
     end
 
     def render_errors(exception)
-        render json:{errors:exception.record.errors.full_messages}, status: :not_found
+        render json:{errors:exception.record.errors.full_messages}, status: :unauthorized
     end
 end
