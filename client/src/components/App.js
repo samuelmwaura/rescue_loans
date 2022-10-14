@@ -26,8 +26,10 @@ function App(){
 },[])
 
 function onCreate(newApplication){
- const newLoans = [...loggedInUser.loans,newApplication]
- setloggedInUser({...loggedInUser,loans:newLoans})
+ console.log(newApplication)
+ const newLoans = [...loggedInUser.loan_applications,newApplication]
+ console.log(newLoans)
+ setloggedInUser({...loggedInUser,loan_applications:newLoans})
 }
 
 

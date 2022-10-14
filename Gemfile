@@ -7,6 +7,11 @@ ruby "2.7.4"
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
+
+# Rack middleware. Used specifically for parsing the request body into params.
+# https://github.com/rack/rack-contrib
+gem "rack-contrib", "~> 2.3"
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -48,8 +53,13 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
 end
 
+#For generating serializers that determine how the data from our app shall show.
 gem "active_model_serializers", "~> 0.10.12"
 
+#For Faking the data that is in accordance to the requirements of the app.
 gem "faker", "~> 2.19"
 
+#For sequelite database
 gem "sqlite3", "~> 1.4"
+
+

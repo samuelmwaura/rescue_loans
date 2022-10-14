@@ -227,7 +227,7 @@ margin-bottom:1px;
 #table{
   display:flex;
   justify-content: center;
-  height:13em;
+  height:auto;
   overflow-y: scroll;
 }
 

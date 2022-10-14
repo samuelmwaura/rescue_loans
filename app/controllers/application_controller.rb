@@ -12,7 +12,7 @@ private
  end
 
  def render_invalid(exception)
-  render json:{error:exception.record.errors.full_messages}
+  render json:{errors:exception.record.errors.full_messages},status: :unprocessable_entity
  end
 
  def authorize

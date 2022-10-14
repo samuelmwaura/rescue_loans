@@ -1,6 +1,6 @@
 import React from "react";
 
-function Registrations({loggedInUser,loans,setloggedInUser}){
+function Applications({loggedInUser}){
 
     return(
       <div className="studentDashboard">
@@ -29,4 +29,4 @@ function Registrations({loggedInUser,loans,setloggedInUser}){
    )
 }
 
-export default Registrations
+export default Applications

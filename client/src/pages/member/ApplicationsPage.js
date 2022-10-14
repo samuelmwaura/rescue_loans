@@ -6,7 +6,7 @@ return (
     <div className="studentDashboard">
     <h1>Apply for a loan</h1>
     <div id="editforms">
-    <ApplicationForm onCreate={onCreate}loggedInUser={loggedInUser} loans={loans}/>
+    <ApplicationForm onCreate={onCreate} loggedInUser={loggedInUser} loans={loans}/>
     </div>
  </div>)
 }

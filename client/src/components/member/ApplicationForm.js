@@ -1,10 +1,16 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
 
 function ApplicationForm({loggedInUser,loans,onCreate}) {
    const [newDetails,setNewDetails] = useState({category:"",user_id:loggedInUser.id,loan_id:0})
    const [errors,setErrors] = useState([])
+   const [success, setSuccess] = useState('')
 
+useEffect(()=>{
+   setTimeout(()=>{
+     setSuccess("")
+   },10000)
+})
 
 function handleOnchange(event){
     setNewDetails({...newDetails,[event.target.name]:event.target.value})
@@ -16,24 +22,22 @@ function handleOnchange(event){
     fetch("http://localhost:3000/loan_applications",{
         method:"POST",
         headers:{
-           "content_Type":"Application/json",
+           "Content-Type":"Application/json",
            "Accept":"Application/json"
         },
         body:JSON.stringify(newDetails)
     })
     .then(response =>{ 
       if(response.ok){
-         response.json().then(newApplication =>onCreate(newApplication))
+         response.json().then(newApplication =>{
+            onCreate(newApplication)
+            setSuccess("New Loan aplication created successfully.")
+         })
       }else{
-         response.json().then(error=>setErrors(error.errors[0]))
+         response.json().then(error=>{
+            console.log(error)
+            setErrors(error.errors[0])})
       }
-   //    response.json()})
-
-   //  .then(data =>{
-   //     console.log(data)
-   //     const newRegistration = [data,...loggedInUser.registrations]
-   //     setloggedInUser({...loggedInUser,registrations:newRegistration})
-   // 
  }).catch(error=>console.log(error))
  }
 
@@ -57,7 +61,11 @@ function handleOnchange(event){
             <div>
             <input type="submit" />
             </div>
-            <p>{errors?errors[0]:null}</p>
+            <p style={{color:"red"}}>{errors?errors:null}</p>
+            <p>{success?success:null}</p>
+
+            
+            
         </form>
   )
 }

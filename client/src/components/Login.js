@@ -75,7 +75,7 @@ function Login({setLoggedInUser}){
             <br/>
             <br />
             <div>
-            <button className="submit" type="submit"> Sign in</button>
+            <button className="submit" type="submit"> Log in</button>
             </div>
             <p>{error[0]}</p>
         </form>

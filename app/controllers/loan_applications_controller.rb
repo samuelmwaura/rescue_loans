@@ -11,6 +11,7 @@ class LoanApplicationsController < ApplicationController
    end
    #POST /loan_applications
    def create
+      puts loan_application_params
       loan = LoanApplication.create!(loan_application_params)
       render json:loan, status: :created
    end
