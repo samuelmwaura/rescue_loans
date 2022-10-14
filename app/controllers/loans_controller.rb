@@ -1,5 +1,6 @@
 class LoansController < ApplicationController
-    skip_before_action :authorize, only:[:index]
+    rescue_from ActiveRecord::InvalidForeignKey, with: :render_foreignkey_failure
+    #skip_before_action :authorize, only:[:index]
     #GET /loans
     def index
        render json: Loan.all
@@ -17,7 +18,7 @@ class LoansController < ApplicationController
     #PATCH /loans/:id
     def update
         loan = find_a_loan
-        loan = Loan.update!(loan_params)
+        loan.update!(loan_params)
         render json: loan, status: :accepted
     end
     #DELETE /loans/:id
@@ -34,5 +35,9 @@ class LoansController < ApplicationController
 
     def loan_params
         params.permit(:name,:timing,:purpose)
+    end
+
+    def render_foreignkey_failure(exception)
+        render json:{errors:exception}, status: :unauthorized
     end
 end
