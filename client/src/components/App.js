@@ -3,10 +3,10 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Navbar from "./Navbar";
 import PageNotFound from "../pages/PageNotFound";
 import Student from "../pages/member/Member";
-import MemberDashboard from "../pages/member/MemberDashboard";
 import Applications from "../pages/member/Applications";
 import Login from "./Login";
 import AllLoans from "../pages/member/AllLoans";
+import ApplicationPage from "../pages/member/ApplicationsPage";
 
 function App(){
 
@@ -14,7 +14,6 @@ function App(){
 
  const [loans,setLoans] = useState([])
  const [loggedInUser,setloggedInUser] = useState(initialUser)
- const [studentPayments,setStudentPayments] = useState([])
 
 
  useEffect(()=>{   
@@ -35,7 +34,7 @@ return (
       <Route path="/loans" element={<Student loggedInUser={loggedInUser}/>}>
          <Route path="all" element={<AllLoans loans={loans}/>}/>
          <Route path="applications" element={<Applications loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>}/>
-         <Route path="apply" element={<MemberDashboard loans={loans} loggedInUser={loggedInUser} studentPayments={studentPayments} setStudentPayments={setStudentPayments}/>} />
+         <Route path="apply" element={<ApplicationPage loans={loans} loggedInUser={loggedInUser} setloggedInUser={setloggedInUser}/>} />
       </Route>
      <Route path="*" element={<PageNotFound />}/>
     </Routes>

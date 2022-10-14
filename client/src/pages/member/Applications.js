@@ -12,6 +12,7 @@ function Registrations({loggedInUser,loans,setloggedInUser}){
          <tr>
             <th>Loan Id</th>
             <th>Loan category</th>
+            <th>Loan award date</th>
          </tr>
       </thead>
       <tbody>         
@@ -19,15 +20,11 @@ function Registrations({loggedInUser,loans,setloggedInUser}){
         return <tr key={application.id}>
             <td>{application.loan_id}</td>
             <td>{application.category}</td>
+            <td>{new Date(application.created_at).toLocaleDateString()}</td>
+
          </tr>})}         
       </tbody>
    </table>   
-   </div>
-   <h1>Apply for a loan</h1>
-   <div id="editforms">
-   <RegisterForm loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>
-   {/* <Editform loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/> */}
-
    </div>
    </div>
    )

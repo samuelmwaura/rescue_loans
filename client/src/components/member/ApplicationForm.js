@@ -7,8 +7,7 @@ function RegisterForm({loggedInUser,loans,setloggedInUser}) {
 
 
 function handleOnchange(event){
-    const courseDetails = event.target.value.split(",")  //Splits the value string into an array of 2 elements
-    setNewDetails({...newDetails,course_name:courseDetails[1],course_id:courseDetails[0]})
+    setNewDetails({...newDetails,[event.target.name]:event.target.value})
 }
 
   function handleOnsubmit(event){
@@ -34,13 +33,18 @@ function handleOnchange(event){
 
   return (
     <form className="registerForm" onSubmit={handleOnsubmit}>
-            <h3 className="title">Register A Course</h3>
-            <label >Name:</label><input type='text' name="student_name" value={loggedInUser.first_name +"  "+ loggedInUser.last_name} required readOnly/>
-            <br />
-            <br />
-            <label>New Course</label><select name="course_id" onChange={handleOnchange} required> 
-            <option>Select a course</option>
+            <h3 className="title">Apply for a Loan</h3>
+            <label>Loan Name</label><select name="loan_id" onChange={handleOnchange} required> 
+            <option>Select Available Loan</option>
             {loans.map(loan=><option value={loan.id} key={loan.id}>{loan.name}</option>)}            
+            </select>
+            <br />
+            <br />
+            <label>Loan Name</label><select name="category" onChange={handleOnchange} required>
+            <option>Select Loan category</option> 
+            <option value="urgent">Urgent</option>
+            <option value="average">Average</option>
+            <option value="low">Low</option>
             </select>
             <br />
             <br />
