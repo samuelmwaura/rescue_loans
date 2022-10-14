@@ -5,7 +5,7 @@ import { NavLink, useNavigate} from "react-router-dom";
 
 function Login({setLoggedInUser}){
  const [credentials,setCredentials] = useState({username:"",password:""})
- const [passed,setPassed] =useState(true)
+ const [error,setError] = useState([])
 
  const navigate = useNavigate()
 
@@ -16,7 +16,7 @@ function Login({setLoggedInUser}){
  function handleLogin(event){
   event.preventDefault()
    
-  fetch("http://localhost:4000",{
+  fetch("http://localhost:3000/login",{
     method:"POST",
     headers:{
     "content-Type":"Application/json",
@@ -24,23 +24,39 @@ function Login({setLoggedInUser}){
 },
  body:JSON.stringify(credentials)
   })
-  .then(response => response.json())
-  .then(data=>{
-        if(data){
-            localStorage.setItem("loggedInUser",JSON.stringify(data))//Setting the logged user to be persisted
-            setLoggedInUser(data)
-            if(data.registration_number){
-            navigate('/students/dashboard')
-             }else if(data.staff_number){
-            navigate('/teachers/dashboard')
-             }
-             else{
-            navigate("/finance/dashboard")
-             }
-        } 
-        setPassed(!passed)
-  })
-  .catch(error=>console.log(error))
+  .then(response => {
+    if (response.ok){
+        response.json().then(user =>{
+            console.log(user)
+            localStorage.setItem("loggedInUser",JSON.stringify(user))//Setting the logged user to be persisted
+            setLoggedInUser(user)
+            navigate('/students/registrations')
+        })
+    }
+    else{
+        response.json().then(error=>{
+            console.log(error.errors)
+            setError(error.errors)
+        })
+    }
+  }  
+
+//   .then(data=>{
+//         if(data){
+//             localStorage.setItem("loggedInUser",JSON.stringify(data))//Setting the logged user to be persisted
+//             setLoggedInUser(data)
+//             if(data.registration_number){
+//             navigate('/students/dashboard')
+//              }else if(data.staff_number){
+//             navigate('/teachers/dashboard')
+//              }
+//              else{
+//             navigate("/finance/dashboard")
+//              }
+//         } 
+//         setPassed(!passed)
+//   })
+  ).catch(error=>console.log(error))
 }
 
    return(
@@ -61,7 +77,7 @@ function Login({setLoggedInUser}){
             <div>
             <button className="submit" type="submit"> Sign in</button>
             </div>
-            <p>{passed?null:"Incorrect username or password."}</p>
+            <p>{error[0]}</p>
         </form>
 
     </div>

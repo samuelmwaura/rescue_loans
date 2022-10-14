@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 
 
-function RegisterForm({loggedInUser,courses,setloggedInUser}) {
+function RegisterForm({loggedInUser,loans,setloggedInUser}) {
    const [newDetails,setNewDetails] = useState({student_name:loggedInUser.first_name+"  "+loggedInUser.last_name,course_name:"",student_id:loggedInUser.id,course_id:""})
    const [isCreated,setIsCreated] = useState(false)
 
@@ -40,7 +40,7 @@ function handleOnchange(event){
             <br />
             <label>New Course</label><select name="course_id" onChange={handleOnchange} required> 
             <option>Select a course</option>
-            {courses.map(course=><option value={[course.id, course.course_name]} key={course.id}>{course.course_name}</option>)}            
+            {loans.map(loan=><option value={loan.id} key={loan.id}>{loan.name}</option>)}            
             </select>
             <br />
             <br />

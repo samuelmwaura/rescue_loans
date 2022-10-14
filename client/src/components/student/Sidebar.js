@@ -1,17 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Sidebar({loggedInCategory}){
+function Sidebar(){
 return(
     <div className="sidebar">
     <ul>
-        <li><NavLink to={"dashboard"}><span className="material-icons">space_dashboard</span>Dashboard</NavLink></li>
-        <li><NavLink to={"registrations"}><span className="material-icons">assignment</span>Registrations</NavLink></li>
-        <li><NavLink to={"payments"}><span className="material-icons">payments</span>Payments</NavLink></li>
+        <li><NavLink to={"all"}><span className="material-icons">real_estate_agent</span>loans</NavLink></li>
+        <li><NavLink to={"applications"}><span className="material-icons">credit_score</span>Registrations</NavLink></li>
+        <li><NavLink to={"apply"}><span className="material-icons">payments</span>Apply</NavLink></li>
     </ul>    
-    <div className="loggedInPanel">    
-    <h4> {loggedInCategory}</h4>
-        </div>
     </div>
 )
 }

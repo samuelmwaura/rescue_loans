@@ -250,7 +250,7 @@ margin-bottom:1px;
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #174e80;
+  background-color: brown;
   color: white;
 }
 
@@ -261,7 +261,7 @@ margin-bottom:1px;
 
 
 .registerForm{
-  border: solid 1px #174e80;
+  border: solid 1px #brown;
   width: 25em;
   margin-bottom:3em;
   margin-top:3em;

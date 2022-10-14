@@ -16,30 +16,32 @@ function App(){
 
  const initialUser = JSON.parse(localStorage.getItem("loggedInUser"))
 
- const [courses,setCourses] = useState([])
- const [loggedInUser,setloggedInUser]= useState(initialUser)
+ const [loans,setLoans] = useState([])
+ const [loggedInUser,setloggedInUser] = useState(initialUser)
  const [aTeacherStudents,setaTeacherStudents] = useState([])
  const [studentPayments,setStudentPayments] = useState([])
 
 
- useEffect(()=>{
-    fetch("https://transitacademyregistry.herokuapp.com/courses")
-    .then(response=>response.json())
-    .then(data=>{
-      setCourses(data)
-    })
-    .catch(err=>console.log(err))
- },[])
+ useEffect(()=>{   
+  fetch("http://localhost:3000/loans")
+   .then(response=>response.json())
+   .then(data=>{
+     console.log(data)
+     setLoans(data)
+   })
+   .catch(err=>console.log(err))
+},[])
+
 
 return (
   <BrowserRouter>
     <Navbar loggedInUser={loggedInUser} setLoggedInUser={setloggedInUser}/>
     <Routes>
       <Route path="/" element={<Login setLoggedInUser={setloggedInUser}/>}/>
-      <Route path="/students" element={<Student loggedInUser={loggedInUser}/>}>
-         <Route path="registrations" element={<Registrations loggedInUser={loggedInUser} courses={courses} setloggedInUser={setloggedInUser}/>}/>
-         <Route path="payments" element={<Payments studentPayments={studentPayments} setStudentPayments={setStudentPayments} loggedInUser={loggedInUser}/>}/>
-         <Route path="dashboard" element={<StudentDashboard courses={courses} loggedInUser={loggedInUser} studentPayments={studentPayments} setStudentPayments={setStudentPayments}/>} />
+      <Route path="/loans" element={<Student loggedInUser={loggedInUser}/>}>
+         <Route path="all" element={<Registrations loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>}/>
+         <Route path="applications" element={<Payments studentPayments={studentPayments} setStudentPayments={setStudentPayments} loggedInUser={loggedInUser}/>}/>
+         <Route path="apply" element={<StudentDashboard  loggedInUser={loggedInUser} studentPayments={studentPayments} setStudentPayments={setStudentPayments}/>} />
       </Route>
       <Route path="/teachers" element={<Teacher loggedInUser={loggedInUser} />}>
         <Route path="dashboard" element={<TeacherDashboard loggedInUser={loggedInUser} aTeacherStudents={aTeacherStudents} setaTeacherStudents={setaTeacherStudents}/>}/>
