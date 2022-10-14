@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Transit Academy Registry.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+` Transit Academy Registry` is a complimentary service application for Transit academy students and staff that include teachers and finance staff. A teacher in the academy is allocated courses by the school to teach which the students register to attend. The students are responsible of initiating their own registrations and making adjustments that include editing the registrations, deleting the registrations provided they have done payments for the courses and the deadline day is not yet.
 
-## Available Scripts
+A finance officer in the academy enters payment records to the school database which captures the student name  and the amount, the date created and the last date of payment update. The application has three categories of users,i.e students, teachers and the finance team each of who logs in with their preset changeable credentials.
 
-In the project directory, you can run:
+## Using the App.
 
-### `npm start`
+### 1. Student.
+Once logged into the system, a student accesses a dashboard that has three cards for summaries.The cards represent the number of registered courses, the likely cumulative number of teachers that could teach in all those courses where a course has two alternatives for teachers and the cumulative payments for the semester.Besides, the dashboard shows the student the courses that are currently on offer in the academy and from which they can choose the ones to register.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The registration table also shows grades for the various units they have registered for. For those registrations that are already graded, the student cannot tamper with them. The payments tab for the student account contains a table that shows the payments that the student has done in the semester and the specific day when the payment was made.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p float="left">
+  <img src="./public/demos/studentDashboard.png" width="350" height="200"/>
+  <img src="./public/demos/studentRegistration.png" width="350" height="200"/> 
+  <img src="./public/demos/studentPayment.png" width="350" height="200"/>
+</p>
 
-### `npm test`
+### 2.Teacher.
+A Teacher account has the dashboard and the grading panel.In the dashboard, the teacher has 2 summary cards one with their total allocated courses for the semester and the other has the total student audience for all the allocated courses i.e. the cumulative number of students who have registered for all the courses allocated to the teacher for the semester. Besides the summares, a teacher can see the specifics of the courses allocated to them as well as see the courses' registered students' details.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the grading panel, a teacher is able to choose a course and get the list of the students registered for that course with an option to grade them. For registrations already graded the teacher cannot tamper with those.
 
-### `npm run build`
+<p float="left">
+  <img src="./public/demos/teacherDashboard.png" width="330" height="200"/>
+  <img src="./public/demos/teacherGrading.png" width="330" height="200"/> 
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Finance Staff.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The finance team has a sole responsibility of creating payments in the system for students who bring invoices. They are able to choose from the database of students. They also can search/filter payments by a given student.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  <img src="./public/demos/financeView.png" width="315" height="200"/>
 
-### `npm run eject`
+## Technologies.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The following are the technologies that have been used to realize this project:
+  
+  1. React Js
+  2. CSS
+  3. Backend Powered by a ruby Sinatra app.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The project backend is built using `ruby sinatra framework` that uses the `ActiveRecord` Object Relational Mapper' to interact with the database.Sinatra is a lightweight web server framework that abstracts the basic routing functionalities.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## System Acess
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Mess around  the project as a student using the username `Marcos1` and `Marcos` as the password.
 
-## Learn More
+## Accessing the hosted project.
+   
+This project is hosted in a model of halves. This frontend that is built using React.js is hosted on `Netlify` while the powering `Ruby Sinatra App` is hosted on `Heroku`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project can be accessed live at [Transist Registry.](https://transitregistry.netlify.app/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ## Get a copy/ personify.
 
-### Code Splitting
+The following is the process of getting your own copy of the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`Transit Registry` is  verion-controlled in two different github repositories, one for the backend `https://github.com/samuelmwaura/transit_academy_server` and the other carrying the app interface `https://github.com/samuelmwaura/transit_academy_client`;
 
-### Analyzing the Bundle Size
+To get copies of each:
+   1. Navigate to the main project's github repo via the link, `https://github.com/samuelmwaura/triadhealth`
+   2. Click the fork button to fork it to your personal github account.
+   3. Once you have a copy in your github account,copy the ssh url -`git@github.com:samuelmwaura/transit_academy_client.git` or the https - `https://github.com/samuelmwaura/transit_academy_client.git` depending on the preference and the github access configuration of your machine.
+   3. Open your terminal (Unix OSs are the presumed operating system for your computer.For any other operating systems, the instruction might be different) and navigate to the folder your desire the project to be located
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   Use the following command to clone the project locally.
+   ```bash
+   git clone preferred url;
+   ```
+  Once the project user interface has been cloned to the local machine, navigate to the created project directory , `cd "Project Directory"`.Open your code editor in this folder to access the project sourcecode.Before beginning to edit the files, run `npm install` to install all the dependencies and later `npm start` to launch the app in the browser.Begin editing the files.
 
-### Making a Progressive Web App
+  Follow the above process for the backend at `https://github.com/samuelmwaura/transit_academy_server`.Once you open the project in the code editor window, `run bundle` install to install the project dependencies and start editing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+     
+   ## License.
+   This project is under the MIT GRO  licenses:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   [MIT](https://choosealicense.com/licenses/mit/)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
