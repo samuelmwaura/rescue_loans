@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../components/student/Sidebar";
+import Sidebar from "../../components/member/Sidebar";
 import { Outlet } from "react-router-dom";
 
 function Student({loggedInUser}){
@@ -15,8 +15,7 @@ function Student({loggedInUser}){
       <Sidebar loggedInCategory={loggedInCategory}/>
       <div className="studentPage">
         <div className="welcome">
-          <h4>Welcome</h4>
-          <h3>{loggedInUser.last_name}!</h3>
+          <h4>We are the Best Overdraft Platform!!</h4>
         </div>
         <Outlet className="outlet" trust={loggedInUser.last_name}/>
       </div>

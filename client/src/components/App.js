@@ -2,15 +2,11 @@ import React, { useEffect, useState } from "react";
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Navbar from "./Navbar";
 import PageNotFound from "../pages/PageNotFound";
-import Student from "../pages/student/Student";
-import StudentDashboard from "../pages/student/StudentDashboard";
-import Registrations from "../pages/student/Registrations";
+import Student from "../pages/member/Member";
+import MemberDashboard from "../pages/member/MemberDashboard";
+import Applications from "../pages/member/Applications";
 import Login from "./Login";
-import Teacher from "../pages/teacher/Teacher";
-import TeacherDashboard from "../pages/teacher/TeacherDashboard";
-import Grade from "../pages/teacher/Grade";
-import Payments from "../pages/student/Payment";
-import Finance from "../pages/finance/Finance";
+import AllLoans from "../pages/member/AllLoans";
 
 function App(){
 
@@ -18,7 +14,6 @@ function App(){
 
  const [loans,setLoans] = useState([])
  const [loggedInUser,setloggedInUser] = useState(initialUser)
- const [aTeacherStudents,setaTeacherStudents] = useState([])
  const [studentPayments,setStudentPayments] = useState([])
 
 
@@ -26,7 +21,6 @@ function App(){
   fetch("http://localhost:3000/loans")
    .then(response=>response.json())
    .then(data=>{
-     console.log(data)
      setLoans(data)
    })
    .catch(err=>console.log(err))
@@ -39,16 +33,11 @@ return (
     <Routes>
       <Route path="/" element={<Login setLoggedInUser={setloggedInUser}/>}/>
       <Route path="/loans" element={<Student loggedInUser={loggedInUser}/>}>
-         <Route path="all" element={<Registrations loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>}/>
-         <Route path="applications" element={<Payments studentPayments={studentPayments} setStudentPayments={setStudentPayments} loggedInUser={loggedInUser}/>}/>
-         <Route path="apply" element={<StudentDashboard  loggedInUser={loggedInUser} studentPayments={studentPayments} setStudentPayments={setStudentPayments}/>} />
+         <Route path="all" element={<AllLoans loans={loans}/>}/>
+         <Route path="applications" element={<Applications loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>}/>
+         <Route path="apply" element={<MemberDashboard loans={loans} loggedInUser={loggedInUser} studentPayments={studentPayments} setStudentPayments={setStudentPayments}/>} />
       </Route>
-      <Route path="/teachers" element={<Teacher loggedInUser={loggedInUser} />}>
-        <Route path="dashboard" element={<TeacherDashboard loggedInUser={loggedInUser} aTeacherStudents={aTeacherStudents} setaTeacherStudents={setaTeacherStudents}/>}/>
-        <Route path="grade" element={<Grade loggedInUser={loggedInUser}/>}/>   
-      </Route> 
-      <Route path="/finance/dashboard" element={<Finance loggedInUser={loggedInUser}/> }/>
-      <Route path="*" element={<PageNotFound />}/>
+     <Route path="*" element={<PageNotFound />}/>
     </Routes>
   </BrowserRouter>
 )

@@ -13,10 +13,14 @@ function Navbar({loggedInUser,setLoggedInUser}){
 
     return(
       <nav className="navbar">
-        <h1>Rescue Loans</h1>
-        <p onClick={handleOnClick}>{loggedInUser?<span className="material-icons">logout</span>:null}</p>             
+        <h1>Rescue Lender</h1>
+        <div>
+        <p onClick={handleOnClick}>{loggedInUser?<span className="material-icons">logout</span>:null}</p> 
+       {loggedInUser?`logged in as ${loggedInUser.username}`:null}
+       </div>
+        
       </nav>
-    )
+    ) 
 }
 
 export default Navbar

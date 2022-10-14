@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react";
-import Editform from "../../components/student/EditForm";
-import RegisterForm from "../../components/student/RegisterForm";
+import RegisterForm from "../../components/member/ApplicationForm";
 
 function Registrations({loggedInUser,loans,setloggedInUser}){
 

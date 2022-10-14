@@ -30,7 +30,7 @@ function Login({setLoggedInUser}){
             console.log(user)
             localStorage.setItem("loggedInUser",JSON.stringify(user))//Setting the logged user to be persisted
             setLoggedInUser(user)
-            navigate('/students/registrations')
+            navigate('/loans/all')
         })
     }
     else{
