@@ -1,5 +1,4 @@
-import React, { useState,useEffect } from "react";
-import RegisterForm from "../../components/member/ApplicationForm";
+import React from "react";
 
 function Registrations({loggedInUser,loans,setloggedInUser}){
 

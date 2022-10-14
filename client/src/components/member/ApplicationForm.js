@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 
 
-function RegisterForm({loggedInUser,loans,setloggedInUser}) {
-   const [newDetails,setNewDetails] = useState({student_name:loggedInUser.first_name+"  "+loggedInUser.last_name,course_name:"",student_id:loggedInUser.id,course_id:""})
-   const [isCreated,setIsCreated] = useState(false)
+function ApplicationForm({loggedInUser,loans,onCreate}) {
+   const [newDetails,setNewDetails] = useState({category:"",user_id:loggedInUser.id,loan_id:0})
+   const [errors,setErrors] = useState([])
 
 
 function handleOnchange(event){
@@ -12,8 +12,8 @@ function handleOnchange(event){
 
   function handleOnsubmit(event){
     event.preventDefault()
-
-    fetch("https://transitacademyregistry.herokuapp.com/registrations",{
+    console.log(newDetails)
+    fetch("http://localhost:3000/loan_applications",{
         method:"POST",
         headers:{
            "content_Type":"Application/json",
@@ -21,14 +21,20 @@ function handleOnchange(event){
         },
         body:JSON.stringify(newDetails)
     })
-    .then(response => response.json())
-    .then(data =>{
-       console.log(data)
-       const newRegistration = [data,...loggedInUser.registrations]
-       setloggedInUser({...loggedInUser,registrations:newRegistration})
-       setIsCreated(true)
-    })
-    .catch(error=>console.log(error))
+    .then(response =>{ 
+      if(response.ok){
+         response.json().then(newApplication =>onCreate(newApplication))
+      }else{
+         response.json().then(error=>setErrors(error.errors[0]))
+      }
+   //    response.json()})
+
+   //  .then(data =>{
+   //     console.log(data)
+   //     const newRegistration = [data,...loggedInUser.registrations]
+   //     setloggedInUser({...loggedInUser,registrations:newRegistration})
+   // 
+ }).catch(error=>console.log(error))
  }
 
   return (
@@ -51,9 +57,9 @@ function handleOnchange(event){
             <div>
             <input type="submit" />
             </div>
-            <p>{isCreated?"New Registration created!":null}</p>
+            <p>{errors?errors[0]:null}</p>
         </form>
   )
 }
 
-export default RegisterForm
+export default ApplicationForm

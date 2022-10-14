@@ -25,6 +25,11 @@ function App(){
    .catch(err=>console.log(err))
 },[])
 
+function onCreate(newApplication){
+ const newLoans = [...loggedInUser.loans,newApplication]
+ setloggedInUser({...loggedInUser,loans:newLoans})
+}
+
 
 return (
   <BrowserRouter>
@@ -34,7 +39,7 @@ return (
       <Route path="/loans" element={<Student loggedInUser={loggedInUser}/>}>
          <Route path="all" element={<AllLoans loans={loans}/>}/>
          <Route path="applications" element={<Applications loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>}/>
-         <Route path="apply" element={<ApplicationPage loans={loans} loggedInUser={loggedInUser} setloggedInUser={setloggedInUser}/>} />
+         <Route path="apply" element={<ApplicationPage loans={loans} loggedInUser={loggedInUser} onCreate={onCreate}/>} />
       </Route>
      <Route path="*" element={<PageNotFound />}/>
     </Routes>
