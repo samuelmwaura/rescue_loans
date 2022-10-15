@@ -11,11 +11,8 @@ import Footer from "../pages/member/Footer";
 
 function App(){
 
-//  const initialUser = JSON.parse(localStorage.getItem("loggedInUser"))
-
  const [loans,setLoans] = useState([])
- const [loggedInUser,setloggedInUser] = useState({})
-
+ const [loggedInUser,setloggedInUser] = useState(null)
 
  useEffect(()=>{   
   fetch("/loans")
@@ -26,8 +23,14 @@ function App(){
    .catch(err=>console.log(err))
 
    fetch("/me")
-   .then(response=>response.json())
-   .then(user=>setloggedInUser(user))
+   .then(response=>{
+    if(response.ok){
+      response.json().then(user=>setloggedInUser(user))
+    }else{
+      response.json().then(error=>
+        console.log(error.errors))
+        }
+    })
    .catch(error=>console.log(error))
 },[])
 

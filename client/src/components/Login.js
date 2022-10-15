@@ -33,7 +33,6 @@ function Login({setLoggedInUser}){
     }
     else{
         response.json().then(error=>{
-            console.log(error.errors)
             setError(error.errors)
         })
     }

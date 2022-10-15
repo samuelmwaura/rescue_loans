@@ -6,9 +6,15 @@ function Navbar({loggedInUser,setLoggedInUser}){
  const navigate = useNavigate()
 
  function handleOnClick(){
-  localStorage.clear()
-  setLoggedInUser(null)
-   navigate('/')
+  fetch('/logout',{
+    method:"DELETE"
+  })
+  .then(()=>{
+    setLoggedInUser(null)
+    navigate('/')
+  })
+  .catch(error=>console.log(error))
+
  }
 
     return(
