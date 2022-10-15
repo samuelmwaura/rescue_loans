@@ -7,6 +7,7 @@ import Applications from "../pages/member/Applications";
 import Login from "./Login";
 import AllLoans from "../pages/member/AllLoans";
 import ApplicationPage from "../pages/member/ApplicationsPage";
+import Footer from "../pages/member/Footer";
 
 function App(){
 
@@ -17,7 +18,7 @@ function App(){
 
 
  useEffect(()=>{   
-  fetch("http://localhost:3000/loans")
+  fetch("/loans")
    .then(response=>response.json())
    .then(data=>{
      setLoans(data)
@@ -45,6 +46,7 @@ return (
       </Route>
      <Route path="*" element={<PageNotFound />}/>
     </Routes>
+    <Footer/>
   </BrowserRouter>
 )
 } 

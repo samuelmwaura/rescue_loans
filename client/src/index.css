@@ -339,3 +339,11 @@ margin-bottom:1px;
   margin-top:10px;
   margin-left:25em;  
 }
+
+#footer{
+  background-color: #0b4882;
+  height:2em;
+  float: bottom;  
+  bottom: 0px;
+  position:relative;
+}

@@ -16,7 +16,7 @@ function Login({setLoggedInUser}){
  function handleLogin(event){
   event.preventDefault()
    
-  fetch("http://localhost:3000/login",{
+  fetch("/login",{
     method:"POST",
     headers:{
     "content-Type":"Application/json",

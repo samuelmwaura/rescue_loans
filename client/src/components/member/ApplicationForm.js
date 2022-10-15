@@ -19,7 +19,7 @@ function handleOnchange(event){
   function handleOnsubmit(event){
     event.preventDefault()
     console.log(newDetails)
-    fetch("http://localhost:3000/loan_applications",{
+    fetch("/loan_applications",{
         method:"POST",
         headers:{
            "Content-Type":"Application/json",
