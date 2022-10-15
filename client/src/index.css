@@ -84,6 +84,11 @@ margin-bottom:10px;
 font-weight: 200;
 }
 
+.navbar h1 span{
+ font-size:2em;
+ color:rgb(240, 241, 241);
+}
+
 .navbar a{
   font-size: 1.4em;
   margin-bottom:6px;

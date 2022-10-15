@@ -27,8 +27,6 @@ function Login({setLoggedInUser}){
   .then(response => {
     if (response.ok){
         response.json().then(user =>{
-            console.log(user)
-            localStorage.setItem("loggedInUser",JSON.stringify(user))//Setting the logged user to be persisted
             setLoggedInUser(user)
             navigate('/loans/all')
         })

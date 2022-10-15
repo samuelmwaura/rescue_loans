@@ -11,10 +11,10 @@ import Footer from "../pages/member/Footer";
 
 function App(){
 
- const initialUser = JSON.parse(localStorage.getItem("loggedInUser"))
+//  const initialUser = JSON.parse(localStorage.getItem("loggedInUser"))
 
  const [loans,setLoans] = useState([])
- const [loggedInUser,setloggedInUser] = useState(initialUser)
+ const [loggedInUser,setloggedInUser] = useState({})
 
 
  useEffect(()=>{   
@@ -24,6 +24,11 @@ function App(){
      setLoans(data)
    })
    .catch(err=>console.log(err))
+
+   fetch("/me")
+   .then(response=>response.json())
+   .then(user=>setloggedInUser(user))
+   .catch(error=>console.log(error))
 },[])
 
 function onCreate(newApplication){
