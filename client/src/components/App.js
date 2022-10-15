@@ -7,12 +7,13 @@ import Applications from "../pages/member/Applications";
 import Login from "./Login";
 import AllLoans from "../pages/member/AllLoans";
 import ApplicationPage from "../pages/member/ApplicationsPage";
-import Footer from "../pages/member/Footer";
 
 function App(){
 
  const [loans,setLoans] = useState([])
  const [loggedInUser,setloggedInUser] = useState(null)
+ const [isMember, setIsMember] = useState(true)
+
 
  useEffect(()=>{   
   fetch("/loans")
@@ -26,18 +27,17 @@ function App(){
    .then(response=>{
     if(response.ok){
       response.json().then(user=>setloggedInUser(user))
-    }else{
-      response.json().then(error=>
-        console.log(error.errors))
-        }
+    }
+    // else{
+    //   response.json().then(error=>
+    //     console.log(error.errors))
+    //     }
     })
    .catch(error=>console.log(error))
 },[])
 
 function onCreate(newApplication){
- console.log(newApplication)
  const newLoans = [...loggedInUser.loan_applications,newApplication]
- console.log(newLoans)
  setloggedInUser({...loggedInUser,loan_applications:newLoans})
 }
 
@@ -54,7 +54,7 @@ return (
       </Route>
      <Route path="*" element={<PageNotFound />}/>
     </Routes>
-    <Footer/>
+    {/* <Footer/> */}
   </BrowserRouter>
 )
 } 
