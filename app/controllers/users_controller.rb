@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :render_errors
-#skip_before_action :authorize,only:[:create]
+skip_before_action :authorize,only:[:create]
 
     #POST /users
     def create
         user = User.create!(user_params)
-        render json:user, status: :created
+        render json:{success:"You have been created successfully!"}, status: :created
     end
 
 

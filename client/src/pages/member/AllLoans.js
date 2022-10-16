@@ -1,7 +1,10 @@
 import React, {useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AllLoans({loans}){
 const [filterer,setFilterer] = useState("")
+
+const navigate = useNavigate()
 
 function handleOnchange(event){
     setFilterer(event.target.value)

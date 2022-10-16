@@ -64,6 +64,12 @@ body {
 .loginForm p{
   color: brown;
 }
+
+/* SIGNUP PAGE STYLES */
+.errors{
+  list-style:;
+}
+
 /*NAVBAR STYLES*/
 .navbar{
   height:4em;

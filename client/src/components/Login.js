@@ -67,7 +67,7 @@ function Login({setLoggedInUser}){
             <br/>
             <br/>
             <section id="forgotPassword">
-                <NavLink to="/forgot">Forgot password </NavLink>
+                <NavLink to="/signUp">Sign up </NavLink>
             </section>
             <br/>
             <br />

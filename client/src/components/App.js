@@ -7,13 +7,11 @@ import Applications from "../pages/member/Applications";
 import Login from "./Login";
 import AllLoans from "../pages/member/AllLoans";
 import ApplicationPage from "../pages/member/ApplicationsPage";
+import Signup from "../pages/member/Signup";
 
 function App(){
-
  const [loans,setLoans] = useState([])
  const [loggedInUser,setloggedInUser] = useState(null)
- const [isMember, setIsMember] = useState(true)
-
 
  useEffect(()=>{   
   fetch("/loans")
@@ -47,6 +45,7 @@ return (
     <Navbar loggedInUser={loggedInUser} setLoggedInUser={setloggedInUser}/>
     <Routes>
       <Route path="/" element={<Login setLoggedInUser={setloggedInUser}/>}/>
+      <Route path="/signUp" element={<Signup/>}/>
       <Route path="/loans" element={<Student loggedInUser={loggedInUser}/>}>
          <Route path="all" element={<AllLoans loans={loans}/>}/>
          <Route path="applications" element={<Applications loggedInUser={loggedInUser} loans={loans} setloggedInUser={setloggedInUser}/>}/>
