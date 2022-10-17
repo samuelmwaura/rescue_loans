@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar({loggedInUser,setLoggedInUser}){
+function Navbar({loggedInUser,setLoggedInUser,setShowNavbar}){
   
  const navigate = useNavigate()
 
@@ -12,6 +12,7 @@ function Navbar({loggedInUser,setLoggedInUser}){
   .then(()=>{
     localStorage.clear()
     setLoggedInUser(null)
+    setShowNavbar(false)
     navigate('/')
   })
   .catch(error=>console.log(error))

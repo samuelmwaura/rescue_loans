@@ -7,13 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(244, 241, 241);
 }
+
 /*LOGIN PAGE STYLES*/
 
 .loginForm{
-  height: 44.1em;
+  height: 50em;
   display:flex;
   align-items:center;
   justify-content:center;
+  background-image: url("../public/loan4.jpg");
+  background-repeat: no-repeat;
+  background-size:  1600px 1100px;
 }
 
 .loginForm .title{
@@ -21,10 +25,16 @@ body {
   margin-top:1em;
 }
 
+.loginForm .title span{
+  color:navy;
+  font-weight: 300;
+}
+
 .loginForm form{
   border:solid;
   border:1px solid brown;
   border-radius:10px;
+  background-color:rgb(217, 217, 217);
   padding:4em;
   padding-top:0em;
   color: brown;

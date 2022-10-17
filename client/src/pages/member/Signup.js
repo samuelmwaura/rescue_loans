@@ -42,7 +42,7 @@ function Signup(){
 return (
     <div className="loginForm">  
     <form onSubmit={handleSubmit}>
-        <h2 className="title">Sign up</h2>
+        <h2 className="title">Rescue Lender <span>Sign up</span></h2>
         <label className="label">Username:</label><input type='text' name="username" className="formInput" value={credentials.username} onChange={handleOnchange} placeholder="Enter your Username" required/>
         <br />
         <br />
