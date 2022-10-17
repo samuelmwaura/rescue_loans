@@ -10,8 +10,9 @@ import ApplicationPage from "../pages/member/ApplicationsPage";
 import Signup from "../pages/member/Signup";
 
 function App(){
+ const initialUser = JSON.parse(localStorage.getItem("loggedInUser")) //Gets the user and converts the data from a Json string to an Js object.
  const [loans,setLoans] = useState([])
- const [loggedInUser,setloggedInUser] = useState(null)
+ const [loggedInUser,setloggedInUser] = useState(initialUser)
 
  useEffect(()=>{   
   fetch("/loans")

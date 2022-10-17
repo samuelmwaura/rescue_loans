@@ -10,6 +10,7 @@ function Navbar({loggedInUser,setLoggedInUser}){
     method:"DELETE"
   })
   .then(()=>{
+    localStorage.clear()
     setLoggedInUser(null)
     navigate('/')
   })

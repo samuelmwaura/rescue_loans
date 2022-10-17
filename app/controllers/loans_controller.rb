@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
     rescue_from ActiveRecord::InvalidForeignKey, with: :render_foreignkey_failure
-    #skip_before_action :authorize, only:[:index]
+    skip_before_action :authorize, only:[:index]
     #GET /loans
     def index
        render json: Loan.all

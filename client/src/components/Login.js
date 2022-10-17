@@ -28,6 +28,7 @@ function Login({setLoggedInUser}){
     if (response.ok){
         response.json().then(user =>{
             setLoggedInUser(user)
+            localStorage.setItem("loggedInUser",JSON.stringify(user)) //takes the js object of the user and converts it to a JSON string.
             navigate('/loans/all')
         })
     }

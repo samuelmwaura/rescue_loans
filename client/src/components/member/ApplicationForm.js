@@ -31,7 +31,8 @@ function handleOnchange(event){
       if(response.ok){
          response.json().then(newApplication =>{
             onCreate(newApplication)
-            setSuccess("New Loan aplication created successfully.")
+            setSuccess("New Loan application created successfully.")
+            setErrors([])
          })
       }else{
          response.json().then(error=>{
