@@ -13,11 +13,11 @@ puts "Db is seeding..."
     Loan.create!(name:Faker::Company.unique.buzzword,timing:rand(1..40),purpose:purposes[rand(0..4)])
     password = Faker::Name.unique.last_name
     passwords << password
-    User.create!(username:Faker::Name.unique.first_name,password:password)
+    Member.create!(username:Faker::Name.unique.first_name,password:password,role:"member")
 end
 
 80.times do
-    LoanApplication.create!(category:categories[rand(0..2)], user_id:rand(1..20),loan_id:rand(1..20))
+    LoanApplication.create!(category:categories[rand(0..2)], member_id:rand(1..20),loan_id:rand(1..20))
 end
 puts "Db is seeded completely!"
 

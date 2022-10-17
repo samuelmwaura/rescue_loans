@@ -15,7 +15,7 @@ function App(){
  const [loggedInUser,setloggedInUser] = useState(initialUser)
  const [showNavbar, setShowNavbar] = useState(false)
 
- useEffect(()=>{   
+ useEffect((loggedInUser)=>{   
   fetch("/loans")
    .then(response=>response.json())
    .then(data=>{
@@ -24,7 +24,7 @@ function App(){
    .catch(err=>console.log(err))
   
 
-   setShowNavbar(true)
+   if(loggedInUser) setShowNavbar(true)
 
    fetch("/me")
    .then(response=>{

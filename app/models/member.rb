@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Member < ApplicationRecord
     has_secure_password
      #associations
     has_many :loan_applications

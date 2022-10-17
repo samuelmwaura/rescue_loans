@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Signup(){
-    const [credentials,setCredentials] = useState({username:"",password:"",passwordConfirmation:""})
+    const [credentials,setCredentials] = useState({username:"",password:"",passwordConfirmation:"",role:"member"})
     const [error,setErrors] = useState(null)
     const [success, setSuccess] = useState("")
 
@@ -12,7 +12,7 @@ function Signup(){
 
     function handleSubmit(event){
     event.preventDefault()
-    fetch("/users",{
+    fetch("/members",{
         method:"POST",
         headers:{
           "content-Type":"Application/json",

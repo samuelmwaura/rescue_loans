@@ -1,6 +1,6 @@
 class Loan < ApplicationRecord
     has_many :loan_applications
-    has_many :users, through: :loan_applications
+    has_many :members, through: :loan_applications
 
       #validations
     validates :name, presence:true, uniqueness:true

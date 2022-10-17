@@ -1,4 +1,4 @@
-class UserSerializer < ActiveModel::Serializer
+class MemberSerializer < ActiveModel::Serializer
   attributes :id,:username
   has_many :loans
   has_many :loan_applications

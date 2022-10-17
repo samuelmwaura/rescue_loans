@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :loans
-  resources :users, only:[:create,:show]
+  resources :members, only:[:create,:show]
   resources  :loan_applications,only:[:index,:create,:show]
         #Session routes
   post "/login",to: "sessions#create"

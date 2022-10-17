@@ -1,5 +1,5 @@
 class LoanApplicationSerializer < ActiveModel::Serializer
-  attributes :id,:user_id,:loan_id,:category,:created_at
+  attributes :id,:member_id,:loan_id,:category,:created_at
   belongs_to :loan
-  belongs_to :user
+  belongs_to :member
 end
